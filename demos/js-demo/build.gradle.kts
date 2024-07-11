@@ -3,19 +3,17 @@ plugins {
 }
 
 repositories {
-    jcenter()
     mavenCentral()
-    maven { url = uri("https://dl.bintray.com/kotlin/kotlinx") }
 }
 
 dependencies {
     implementation(project(":"))
-    implementation("org.jetbrains.kotlinx:kotlinx-html:0.7.2")
+    implementation("org.jetbrains.kotlinx:kotlinx-html:0.11.0")
     testImplementation(kotlin("test-js"))
 }
 
 kotlin {
-    js(LEGACY) {
+    js {
         browser {
             binaries.executable()
             testTask {

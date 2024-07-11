@@ -1,5 +1,6 @@
 package js_demo
 
+import kotlinx.browser.document
 import kotlinx.html.dom.append
 import kotlinx.html.js.button
 import kotlinx.html.js.input
@@ -19,7 +20,6 @@ import parsek.opt
 import parsek.plus
 import parsek.rep
 import parsek.times
-import kotlin.browser.document
 
 val int: Parser<Int> = Rule("int") { (CharIn("+-").opt() * WhileCharIn("0123456789")).capture().map { it.toInt() } }
 

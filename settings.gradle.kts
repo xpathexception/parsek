@@ -1,4 +1,3 @@
-
 rootProject.name = "parsek"
 
-include("demos:js-demo")
+include(":demos:js-demo")
