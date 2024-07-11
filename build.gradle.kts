@@ -1,10 +1,9 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
-
 plugins {
     kotlin("multiplatform") version "2.0.0"
     id("maven-publish")
 }
-group = "com.github.cdietze"
+
+group = "com.github.cdietze.parsek"
 version = "0.2.1"
 
 repositories {
@@ -53,7 +52,9 @@ kotlin {
             }
         }
     }
+
     sourceSets {
+        commonMain {}
         commonTest.dependencies {
             implementation(kotlin("test-common"))
             implementation(kotlin("test-annotations-common"))
@@ -65,6 +66,26 @@ kotlin {
         }
         jsTest.dependencies {
             implementation(kotlin("test-js"))
+        }
+    }
+}
+
+val javadocJar by tasks.registering(Jar::class) {
+    archiveClassifier.set("javadoc")
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            artifact(javadocJar.get())
+
+            artifactId = "parsek"
+            groupId = project.group.toString()
+            version = project.version.toString()
+
+            pom {
+                name.set("parsek")
+            }
         }
     }
 }
