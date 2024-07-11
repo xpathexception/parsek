@@ -15,7 +15,7 @@ abstract class Parser<out T> {
      * It uses a mutable [ParserCtx] that is passed to recursive [parseRec] calls. Thus avoids
      * object allocations (e.g. for [ParseResult.Success] and [ParseResult.Failure] instances.
      */
-    internal abstract fun parseRec(ctx: ParserCtx, index: Int): MutableParseResult
+    abstract fun parseRec(ctx: ParserCtx, index: Int): MutableParseResult
 }
 
 abstract class NamedParser<out T> : Parser<T>() {
